@@ -1,6 +1,6 @@
 # zenn
 
-[Zenn](https://zenn.dev/) に公開する記事。
+[zenn.dev/yusaka_lu](https://zenn.dev/yusaka_lu) に公開する記事。
 
 手を動かして確かめたことを記事にする。読者が再現するためのコードは別リポジトリ [zenn-examples](https://github.com/y-sakamoto-lu-llc/zenn-examples) にあり、記事からは commit permalink で参照する。
 
