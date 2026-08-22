@@ -1,0 +1,15 @@
+{
+  "name": "zenn",
+  "version": "1.0.0",
+  "description": "Zenn の記事と、記事から辿れる再現用サンプルコード",
+  "scripts": {
+    "preview": "zenn preview",
+    "new:article": "zenn new:article"
+  },
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "dependencies": {
+    "zenn-cli": "^0.5.2"
+  },
+  "private": true
+}
