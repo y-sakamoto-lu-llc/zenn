@@ -3,7 +3,7 @@ title: Rails 8.1 の認証ジェネレータ入門 — 生成される21ファ�
 emoji: "🔐"
 type: tech
 topics: [rails, ruby, authentication, security]
-published: false
+published: true
 ---
 
 Rails 8 から、`bin/rails generate authentication` というコマンドで認証の土台が作れるようになりました。gem を入れるのではなく、**自分のアプリのファイルとしてコードが吐き出される**のが特徴です。Devise のようにブラックボックスの中で動くのではなく、生成されたコードを読んで、必要なら書き換えて使います。
