@@ -4,12 +4,17 @@
   "description": "Zenn の記事と、記事から辿れる再現用サンプルコード",
   "scripts": {
     "preview": "zenn preview",
-    "new:article": "zenn new:article"
+    "new:article": "zenn new:article",
+    "check:mermaid": "node scripts/mermaid-check.mjs"
   },
   "license": "UNLICENSED",
   "type": "commonjs",
   "dependencies": {
     "zenn-cli": "^0.5.2"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "jsdom": "^30.0.1",
+    "mermaid": "^11.17.2"
+  }
 }
