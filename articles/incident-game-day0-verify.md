@@ -3,7 +3,7 @@ title: AI に生成させたデータを読まずに使う — 保証9件を9通
 emoji: "🔍"
 type: tech
 topics: [ai, sqlite, typescript, claudecode, testing]
-published: true
+published: false
 ---
 
 AI にコードやデータを作らせると、量はいくらでも出てきます。困るのは読む側で、全部読むのは最初から不可能です。かといって読まずに使うと、何が入っているか誰も説明できないものが積み上がります。
