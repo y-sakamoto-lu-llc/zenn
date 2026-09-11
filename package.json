@@ -6,7 +6,9 @@
     "preview": "zenn preview",
     "new:article": "zenn new:article",
     "check:mermaid": "node scripts/mermaid-check.mjs",
-    "check:title": "node scripts/title-check.mjs"
+    "check:title": "node scripts/title-check.mjs",
+    "check:topic": "node scripts/topic-check.mjs",
+    "stats": "node scripts/stats.mjs"
   },
   "license": "UNLICENSED",
   "type": "commonjs",
