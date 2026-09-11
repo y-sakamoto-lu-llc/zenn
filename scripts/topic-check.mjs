@@ -20,8 +20,8 @@ const LEAD_TOPIC = 'rails';
 const PUBLICATION = '';
 
 // 名乗りを決める前（2026-08）に出した記事。topics の先頭が rails ではない。
-// 残すか非公開に戻すかが決まったら、この行ごと消す。
-// 残したまま FAIL を出し続けると、検査そのものが無視されるようになる。
+// 2026-09-11 に3本とも非公開へ戻すと決めたので、この免除は恒久。看板が変わって
+// 公開し直すことにしたら、その時点でこの行ごと消して検査に通す。
 const GRANDFATHERED = new Set([
   'herdr-popup-file-tree-preview',
   'claude-code-subagents-vs-cross-session',

@@ -3,7 +3,7 @@ title: Claude Code のサブエージェントとセッション間通信は何�
 emoji: "📮"
 type: tech
 topics: [claudecode, ai, agent, cli]
-published: true
+published: false
 ---
 
 Claude Code には「複数の Claude を動かす」仕組みが2つあります。**サブエージェント**と、v2.1.224 で入った**セッション間通信**です。

@@ -3,7 +3,7 @@ title: "Herdr にファイルツリーを足す — シェルスクリプト2本
 emoji: "🌲"
 type: tech
 topics: [herdr, fzf, terminal, shell, claudecode]
-published: true
+published: false
 ---
 
 ## 作ったもの
