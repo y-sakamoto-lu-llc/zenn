@@ -3,7 +3,7 @@ title: packwerk の「違反ゼロ」は境界を保証しない — 分離で�
 emoji: "📦"
 type: tech
 topics: [rails, ruby, packwerk, architecture]
-published: true
+published: false
 ---
 
 Shopify Engineering の「[A Packwerk Retrospective](https://shopify.engineering/a-packwerk-retrospective)」（2024-02-07）は、自社で作った Packwerk を数年運用した後の振り返りです。その「悪かった点」の4つ目に、こう書かれています。
