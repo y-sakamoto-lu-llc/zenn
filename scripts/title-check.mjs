@@ -9,6 +9,13 @@
 //
 //   npm run check:title              # articles/ 配下すべて
 //   npm run check:title -- a.md b.md # 表示を絞る（直近2本の計算には全記事を使う）
+//
+// 署名の定義（区切り記号・文末・直近何本・記事の並び順）はこのファイルだけが持つ。
+// 他から使うための出力が2つある。どちらも人向けの出力とは別経路で、終了コードは常に 0。
+// 判定結果は終了コードではなく JSON の中を見る。
+//
+//   node scripts/title-check.mjs --json                  # 全記事の署名と直近2本
+//   node scripts/title-check.mjs --titles "案1" "案2"     # まだ無いタイトルの署名を調べる
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -77,7 +84,51 @@ for (const a of all) {
   a.end = ending(a.title);
 }
 
-const args = process.argv.slice(2);
+// --titles より後ろは全部タイトル候補として読む（ファイル名と混ぜられない）
+const argv = process.argv.slice(2);
+const titlesAt = argv.indexOf('--titles');
+const candidates = titlesAt === -1 ? [] : argv.slice(titlesAt + 1);
+const head = titlesAt === -1 ? argv : argv.slice(0, titlesAt);
+const asJson = head.includes('--json') || titlesAt !== -1;
+
+const brief = (a) => ({ file: a.file, title: a.title, separator: a.sep, ending: a.end });
+const recent = all.slice(-RECENT);
+
+if (candidates.length) {
+  const rows = candidates.map((title, i) => {
+    const sep = separator(title);
+    const end = ending(title);
+    const clash = recent.find((p) => p.sep === sep && p.end === end);
+    return {
+      title,
+      separator: sep,
+      ending: end,
+      // 直近2本との衝突と、候補どうしの衝突は別に出す。3案は互いに署名を変える
+      clash_with_recent: clash ? clash.file : null,
+      clash_with: candidates.filter((t, j) => j !== i && separator(t) === sep && ending(t) === end),
+    };
+  });
+  console.log(JSON.stringify({
+    recent: recent.map(brief),
+    candidates: rows,
+    ok: rows.every((r) => !r.clash_with_recent && r.clash_with.length === 0),
+  }, null, 2));
+  process.exit(0);
+}
+
+if (asJson) {
+  console.log(JSON.stringify({
+    articles: all.map((a, i) => {
+      const clash = all.slice(Math.max(0, i - RECENT), i).find((p) => p.sep === a.sep && p.end === a.end);
+      // at は追加コミットの時刻。未コミット（いま書いているもの）は null
+      return { ...brief(a), at: Number.isFinite(a.at) ? a.at : null, clash: clash ? clash.file : null };
+    }),
+    recent: recent.map(brief),
+  }, null, 2));
+  process.exit(0);
+}
+
+const args = head.filter((a) => !a.startsWith('--'));
 const shown = args.length ? new Set(args.map((f) => path.normalize(f))) : null;
 
 let failed = 0;
